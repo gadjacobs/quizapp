@@ -11,7 +11,13 @@ function App() {
   const [options, setOptions] = useState([]);
   const [optionsList, setOptionsList] = useState([]);
   const [answer, setAnswer] = useState("");
-  const [questionList, setQuestionList] = useState([]);
+  const [questionList, setQuestionList] = useState([
+    {
+      question: "This is the default question. The right answer is David.",
+      options: ["Dan", "David", "Nelly", "Cassandra", "Emily"],
+      answer: "David",
+    },
+  ]);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [correctAnswers, setsetCorrectAnswers] = useState(0);
   const [showCompleted, setShowCompleted] = useState(false);
@@ -115,9 +121,7 @@ function App() {
                           type="radio"
                           class="form-radio h-4 w-4"
                           name="radioGroup"
-                          checked={
-                            parseInt(option) === parseInt(selectedAnswer)
-                          }
+                          checked={option === selectedAnswer}
                           id={option}
                           value={option}
                           onChange={(e) => setSelectedAnswer(e.target.value)}
