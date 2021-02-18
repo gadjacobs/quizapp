@@ -40,10 +40,12 @@ function App() {
   };
 
   const resetQuiz = () => {
+    setCounter(0);
     setQuestion("");
     setOptions("");
     setOptionsList([]);
     setAnswer("");
+    setsetCorrectAnswers(0);
   };
 
   const addQuestion = () => {
@@ -52,8 +54,10 @@ function App() {
       options: optionsList,
       answer: answer,
     };
-    setQuestionList([...questionList, obj]);
-    resetQuiz();
+    if (question && optionsList.length > 1 && answer) {
+      setQuestionList([...questionList, obj]);
+      resetQuiz();
+    }
   };
 
   const checkAnswer = () => {
@@ -70,6 +74,7 @@ function App() {
     setShowCompleted(false);
     setShowQuiz(false);
     setShowTakeQuiz(false);
+    resetQuiz();
   };
 
   const nextQuestion = () => {
